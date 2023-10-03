@@ -34,6 +34,6 @@ jobs:
       - name: Push to dockerhub
         run: |
           echo $rev
-          docker tag ${{ secrets.DOCKER_USERNAME }}/$rev
+          docker tag hello ${{ secrets.DOCKER_USERNAME }}/$rev
           docker push ${{ secrets.DOCKER_USERNAME }}/$rev
         
