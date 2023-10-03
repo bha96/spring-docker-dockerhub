@@ -34,6 +34,7 @@ jobs:
       - name: Push to dockerhub
         run: |
           echo $rev
+          rev=$(git rev-parse --short HEAD)
           docker tag hello ${{ secrets.DOCKER_USERNAME }}/$rev
           docker push ${{ secrets.DOCKER_USERNAME }}/$rev
         
