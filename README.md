@@ -11,6 +11,13 @@
 
 Du må start med å lage en fork av dette repoet til din egen GitHub konto. 
 
+## Lag en klone av din Fork (av dette repoet) inn i ditt Cloud 9 miljø
+
+Fra Terminal i Cloud 9. Klone repository med HTTPS URL. Eksempel ;
+```
+git clone https://github.com/≤github bruker>/spring-docker-dockerhub.git
+```
+
 ## Logg i Cloud 9 miljøet ditt
 
 * URL for innlogging er https://244530008913.signin.aws.amazon.com/console
@@ -25,16 +32,9 @@ Du kan hoppe over dette steget hvis du allerede har laget et Token
 
 * Når du skal autentisere deg mot din GitHub konto fra Cloud 9 trenger du et access token.  Gå til  https://github.com/settings/tokens og lag et nytt.
 * Velg "Classic"
-* Gi token et navn, det skal også ha "repository", og "forkflow" rettigheter
+* Gi token et navn, det skal også ha "repository", og "workflow" rettigheter
 * NB. Ta vare på tokenet et sted, du trenger dette senere når du skal gjøre ```git push```
 
-### Lage en klone av din Fork (av dette repoet) inn i ditt Cloud 9 miljø
-
-Fra Terminal i Cloud 9. Klone repository med HTTPS URL. Eksempel ;
-
-```
-git clone https://github.com/≤github bruker>/spring-docker-dockerhub.git
-```
 
 Får du denne feilmeldingen ```bash: /spring-docker-dockerhub: Permission denied``` - så glemte du å bytte ut <github bruker> med
 ditt eget Github brukernavn :-)
@@ -274,3 +274,8 @@ jobs:
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/glenn:$rev
 ```
 Gjør endringer på koden i main branch - se at GitHub actions lager et nytt container image og laster opp til ECR. 
+
+# Bonus challenge
+
+* Kan du laste opp image til både AWS ECR, men også Docker Hub fra GitHub Actions workflowen?
+* Kan du kjøre Spring boot applikasjonen din på tjenesten AWS Apprunner ? https://docs.aws.amazon.com/apprunner/latest/dg/what-is-apprunner.html
