@@ -23,12 +23,16 @@ jobs:
           docker build . -t hello
           docker tag hello 244530008913.dkr.ecr.eu-west-1.amazonaws.com/bha:$rev
           docker push 244530008913.dkr.ecr.eu-west-1.amazonaws.com/bha:$rev
-      - name: Push to dockerhub
+      - name: Docker login
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker tag hello docker.io/davidfravestlandet/$rev
-          docker push docker.io/davidfravestlandet/$rev
+      - name: Docker build
+        run: docker build . --tag hello
+      - name: Push to dockerhub
+        run: |
+          docker tag hello docker.io/$DOCKER_USERNAME/$rev
+          docker push docker.io/$DOCKER_USERNAME/$rev
         
