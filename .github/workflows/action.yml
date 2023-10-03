@@ -33,6 +33,6 @@ jobs:
         run: docker build . --tag hello
       - name: Push to dockerhub
         run: |
-          docker tag hello docker.io/$DOCKER_USERNAME/$rev
-          docker push docker.io/$DOCKER_USERNAME/$rev
+          docker tag hello docker.io/davidfravestlandet/$rev
+          docker push docker.io/davidfravestlandet/$rev
         
