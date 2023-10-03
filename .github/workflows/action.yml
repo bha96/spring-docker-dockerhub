@@ -29,6 +29,6 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker tag hello davidfravestlandet/$rev
-          docker push davidfravestlandet/$rev
+          docker tag hello docker.io/davidfravestlandet/$rev
+          docker push docker.io/davidfravestlandet/$rev
         
