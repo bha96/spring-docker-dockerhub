@@ -6,6 +6,6 @@ RUN mvn package
 
 FROM adoptopenjdk/openjdk11:alpine-slim
 COPY --from=builder /app/target/*.jar /app/application.jar
-EXPOSSE 8080
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app/application.jar"]
 
