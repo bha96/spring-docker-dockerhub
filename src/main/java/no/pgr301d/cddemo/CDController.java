@@ -8,7 +8,7 @@ class CDController {
 
     @GetMapping(path = "/")
     public String hello() {
-        return "<h1>Test</h1>";
+        return "<h1>Test</h1><h2>Yo yo</h2>";
     }
 
 }
