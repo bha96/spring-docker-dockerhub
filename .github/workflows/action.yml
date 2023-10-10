@@ -18,12 +18,12 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          echo $AWS_LINK
-          aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin $AWS_LINK
+          echo ${{ secrets.AWS_LINK }}
+          aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin ${{ secrets.AWS_LINK }}
           rev=$(git rev-parse --short HEAD)
           docker build . -t hello
-          docker tag hello $AWS_LINK/bha:$rev
-          docker push $AWS_LINK/bha:$rev
+          docker tag hello ${{ secrets.AWS_LINK }}/bha:$rev
+          docker push ${{ secrets.AWS_LINK }}/bha:$rev
       - name: Docker login
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
